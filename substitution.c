@@ -31,7 +31,7 @@ char *decrypt(char *message,char code[]){
   int length = strlen(message);
   char *decryptMessage = (char *) malloc(sizeof(char)*length); //line 30,31,32 are the same as the encrypt function
   for(int i = 0; i <length; i++){
-    int decryptIndex = toupper(message[i]) - 'A';
+    int decryptIndex = toupper(message[i]) - 'A'; //
     if(decryptIndex >= 0 && decryptIndex < 26){
       int codeIndex = findIndex(code,toupper(message[i])); //uses the findIndex function to find the index value in the encrypted alphabet and message, and makes that value an integer that will eventually revert the encryption.
       decryptMessage[i] = 'A' + codeIndex; //adds the codeIndex to revert original encryption
