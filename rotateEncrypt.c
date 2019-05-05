@@ -9,14 +9,14 @@ int main ()
     
     printf("Choose an option:\n1. Encryption\n2. Decryption\n");
     scanf ("%d", &x);
-    if(x <= 0 || x >= 3)
+    if(x <= 0 || x >= 3) //exits code if no correct option is chosen
     {
         printf("No correct option was chosen. Try again.");
         return 0;
     }
     printf("Enter a key(0-26): ");
     scanf("%d", &key);
-    if(key <= 0 || key >= 27)
+    if(key <= 0 || key >= 27) //exits code if no valid key is chosen
     {
         printf("Key is invalid. Must be between 0-26");
         return 0;
@@ -30,20 +30,20 @@ int main ()
     
     for (n=0; (n<1024 && str[n] != '\0'); n++)
     {
-            while(str[n] >= 97 && str[n] <= 122)
+            while(str[n] >= 97 && str[n] <= 122) //changes lowercase message to uppercase in ASCII
             {
             str[n] = str[n] - 32;   
             
                 if (str[n] >= 65 && str[n] <= 90)
                 {
-                str[n] = str[n] - 65;
-                str[n] = ((str[n]+key)%26);
-                str[n] = str[n] + 65;
+                str[n] = str[n] - 65; //"loosely speaking", the ASCII values are now between 0-26
+                str[n] = ((str[n]+key)%26); //ensures that the new string is only rotating through letters
+                str[n] = str[n] + 65; //adjusts it back to valid ASCII values that will be true to the compiler
                 }
             }
     }
     
-    printf("Encrypted message: %s\n", str);
+    printf("Encrypted message: %s\n", str); //prints the encrypted message
 break;
 
 
@@ -57,8 +57,8 @@ break;
         {
             if (str[n] >= 65 && str[n] <= 90)
             {
-            str[n] = str[n] - 39;
-            str[n] = ((str[n]-key)%26);
+            str[n] = str[n] - 39; 
+            str[n] = ((str[n]-key)%26); //does the reverse of the encryption
             str[n] = str[n] + 65;
             }
 
